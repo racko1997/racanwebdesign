@@ -43,6 +43,7 @@ podatke za Google — mijenjaš na jednom mjestu.
 - [ ] **Domen** upisan u `site.config.ts` → `url`
 - [ ] Telefon, Viber i WhatsApp provjereni klikom **na telefonu**
 - [ ] Poslata probna poruka kroz formu i stigla na mail
+- [ ] **Meta Pixel ID** u `site.config.ts` (tek kad puštaš reklame) — dok je prazan, na sajtu nema Meta koda ni trake za pristanak
 
 ---
 
@@ -71,6 +72,19 @@ podatke za Google — mijenjaš na jednom mjestu.
 
 **`status: "live"` samo za sajt koji je stvarno naručen.** Za sve ostalo
 `"koncept"` — ispod se automatski ispiše napomena da rad nije naručen.
+
+---
+
+## Analitika
+
+**Vercel Analytics** je ugrađen i radi sam čim se sajt objavi na Vercelu —
+broj posjeta vidiš u Vercel dashboardu, kartica *Analytics*. Ne postavlja
+kolačiće.
+
+**Meta piksel** se pali samo ako je `metaPixelId` popunjen, i to tek nakon
+što posjetilac klikne „U redu" na traci za pristanak. Odbijanje se pamti i
+piksel se tada nikad ne učita. Uspješno poslata forma javlja Meti događaj
+`Lead`, po kojem oglas uči koga da traži.
 
 ---
 

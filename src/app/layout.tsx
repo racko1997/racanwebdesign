@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { Analitika } from "@/components/Analitika";
 import { site } from "@/site.config";
 import { pitanja } from "@/data/faq";
 import { paketi } from "@/data/paketi";
@@ -63,6 +65,12 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
   formatDetection: { telephone: true, address: false, email: true },
+  verification: {
+    ...(site.googleVerifikacija ? { google: site.googleVerifikacija } : {}),
+    ...(site.metaVerifikacija
+      ? { other: { "facebook-domain-verification": site.metaVerifikacija } }
+      : {}),
+  },
 };
 
 export const viewport: Viewport = {
@@ -138,6 +146,10 @@ export default function RootLayout({
           Preskoči na sadržaj
         </a>
         {children}
+        {/* Broj posjeta — bez kolačića, uključuje se sam na Vercelu */}
+        <Analytics />
+        {/* Meta piksel + traka za pristanak — samo ako je ID upisan */}
+        <Analitika />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -32,7 +32,38 @@ export const site = {
    * 3. Ključ stiže na mail — zalijepi ga ovdje.
    * Dok je prazno, forma radi ali te samo upozori da fali ključ.
    */
-  web3formsKey: "12e64632-2aec-43e0-b939-0bb18bb4f66b",
+  web3formsKey: "",
+
+  /**
+   * ---- META PIXEL (Facebook / Instagram reklame) -------------------
+   * Ostavi prazno dok ne pustiš reklame — tada na sajtu nema Meta koda.
+   *
+   * Kad budeš spreman:
+   * 1. business.facebook.com → Events Manager → Connect Data Sources → Web
+   * 2. Izaberi "Meta Pixel", daj mu ime (npr. "Racan sajt")
+   * 3. Kopiraj ID (15-16 cifara) i zalijepi ga ovdje.
+   *
+   * Bez ovoga Meta ne zna ko je sa reklame poslao upit, pa ne može
+   * da optimizuje prikazivanje oglasa ka sličnim ljudima.
+   */
+  metaPixelId: "",
+
+  /**
+   * ---- VERIFIKACIJA DOMENA -----------------------------------------
+   * Popunjava se tek kad sajt bude na pravom domenu.
+   *
+   * Facebook: business.facebook.com → Business Settings → Brand Safety
+   *   → Domains → Add → izaberi „Meta-tag verification" i kopiraj samo
+   *   vrijednost content="..." ovdje.
+   *   Bez ovoga Meta ne da da sam biraš koji događaj je najvažniji, a
+   *   iOS korisnici se slabije prate.
+   *
+   * Google: search.google.com/search-console → Add property → URL prefix
+   *   → HTML tag → kopiraj vrijednost content="..." ovdje.
+   *   Poslije toga u Search Console pošalji sitemap: /sitemap.xml
+   */
+  metaVerifikacija: "",
+  googleVerifikacija: "",
 
   /** Odgovor koji obećavaš u copy-ju. Mijenjaj slobodno. */
   rokOdgovora: "isti dan",

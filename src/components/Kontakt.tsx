@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Wrap } from "./Sections";
 import { site, cta } from "@/site.config";
+import { prijaviUpit } from "./Analitika";
 
 type Stanje = "mirno" | "salje" | "poslato" | "greska";
 
@@ -37,6 +38,8 @@ export default function Kontakt() {
       if (json.success) {
         setStanje("poslato");
         form.reset();
+        // Javi Meti da je upit stigao — po tome oglas uči koga da traži
+        prijaviUpit();
       } else {
         setStanje("greska");
         setPoruka("Slanje nije uspjelo. Pozovite me ili pišite na Viber.");
