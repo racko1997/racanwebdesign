@@ -1,0 +1,51 @@
+/** Paketi i cijene — koriste ih i sekcija Cijene i strukturirani podaci za Google. */
+export const paketi = [
+  {
+    naziv: "Start",
+    zaKoga: "Za zanate, servise i manje firme",
+    cijena: "od 399 KM",
+    rok: "3–5 radnih dana",
+    opis: "Sve najvažnije na jednoj stranici — dovoljno da vas neko nađe i pozove.",
+    stavke: [
+      "Jedna stranica (one-page)",
+      "Prilagođeno telefonu i tabletu",
+      "Sekcije: o vama, ponuda, kontakt",
+      "Poziv i Viber u jedan dodir",
+      "Google Maps i radno vrijeme",
+      "Osnovno podešavanje za Google",
+      "Povezivanje domena i objava",
+    ],
+  },
+  {
+    naziv: "Business",
+    zaKoga: "Najbolje za većinu malih firmi",
+    cijena: "od 649 KM",
+    rok: "7–10 radnih dana",
+    istaknuto: true,
+    opis: "Kad imate širu ponudu, fotografije i sadržaj koji ne stane na jednu stranicu.",
+    stavke: [
+      "Sve iz paketa Start",
+      "Više stranica ili proširenih sekcija",
+      "Galerija fotografija",
+      "Detaljan jelovnik, cjenovnik ili ponuda",
+      "Kontakt forma — upiti stižu na vaš mail",
+      "Prijedlog tekstova za cijeli sajt",
+      "Obrada i priprema vaših fotografija",
+    ],
+  },
+  {
+    naziv: "Webshop",
+    zaKoga: "Za prodaju direktno sa sajta",
+    cijena: "po dogovoru",
+    rok: "dogovara se",
+    opis: "Kad se roba naručuje na sajtu, a ne samo predstavlja.",
+    stavke: [
+      "Sve iz paketa Business",
+      "Katalog proizvoda sa cijenama",
+      "Narudžba direktno na sajtu",
+      "Količinski popusti i akcije",
+      "Plaćanje pouzećem",
+      "Narudžbe stižu na vaš mail",
+    ],
+  },
+];

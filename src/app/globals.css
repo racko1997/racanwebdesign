@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+/* ============================================================
+   VERTEX — DIZAJN SISTEM
+   Logotip je jednobojan (tamno plava na papirnoj podlozi), pa je
+   i sajt namjerno skoro jednobojan — boju daju radovi u portfoliju,
+   ne sam sajt. Cyan i breskva se koriste isključivo funkcionalno:
+   cyan za oznaku „živi sajt“ i fokus, breskva za oznaku „koncept“.
+   ============================================================ */
+
+@theme {
+  --color-ink: #101821;
+  --color-ink-2: #1b2733;
+  --color-ink-3: #33414f;
+  --color-paper: #f6f4f0;
+  --color-paper-2: #eae6de;
+  --color-cyan: #00a5dc;
+  --color-cyan-bright: #00b4ec;
+  --color-peach: #e39264;
+
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --radius-none: 0px;
+}
+
+:root {
+  --line: rgba(16, 24, 33, 0.14);
+  --line-strong: rgba(16, 24, 33, 0.28);
+  --line-dark: rgba(246, 244, 240, 0.2);
+  color-scheme: light;
+}
+
+* {
+  border-radius: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* ---------- Tipografija ------------------------------------ */
+
+.display {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ---------- Tipografska skala -------------------------------
+   lead      — uvodni pasus sekcije
+   body      — glavni tekst koji se stvarno čita
+   body-sm   — prateći tekst, i dalje udobno čitljiv
+   ------------------------------------------------------------ */
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+@media (min-width: 640px) {
+  .lead {
+    font-size: 1.1875rem;
+  }
+}
+
+.body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.body-sm {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ---------- Linije ----------------------------------------- */
+
+.rule {
+  border-top: 1px solid var(--line);
+}
+.rule-dark {
+  border-top: 1px solid var(--line-dark);
+}
+
+/* ---------- Fokus ------------------------------------------ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   ANIMACIJE
+   Pravilo: podrazumijevano stanje je UVIJEK vidljivo. Animacija
+   samo dodaje pokret ako je podržana i ako korisnik nije tražio
+   smanjen pokret. Tako sadržaj nikad ne može ostati nevidljiv.
+   ============================================================ */
+
+@keyframes ulaz {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Ulazak heroja pri učitavanju — blagi stepenasti pomak */
+@media (prefers-reduced-motion: no-preference) {
+  .ulaz {
+    animation: ulaz 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .ulaz-1 { animation-delay: 0.04s; }
+  .ulaz-2 { animation-delay: 0.12s; }
+  .ulaz-3 { animation-delay: 0.2s; }
+  .ulaz-4 { animation-delay: 0.28s; }
+}
+
+/* Otkrivanje na skrol — bez JavaScripta, vezano za poziciju u ekranu.
+   Ako pregledač ovo ne podržava, element je jednostavno odmah vidljiv. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rise {
+      animation: ulaz linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 65%;
+    }
+  }
+}
+
+/* Tačka uz oznaku „živi sajt“ — jedva primjetno diše */
+@media (prefers-reduced-motion: no-preference) {
+  .puls {
+    animation: puls 2.6s ease-in-out infinite;
+  }
+}
+@keyframes puls {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Odgovor u čestim pitanjima — mekano se otvori */
+@media (prefers-reduced-motion: no-preference) {
+  details[open] > .odgovor {
+    animation: ulaz 0.35s ease both;
+  }
+}
+
+/* ---------- Otkrivanje na skrol (stari, JS pristup) ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Skrolujući prikaz sajta u portfoliju ------------- */
+
+.shot-track {
+  will-change: transform;
+  transition: transform 0.35s linear;
+}
+
+/* ---------- Forma ------------------------------------------- */
+
+.field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  padding: 0.95rem 0;
+  font-size: 1.0625rem;
+  font-family: inherit;
+  color: var(--color-ink);
+  transition: border-color 0.2s ease;
+}
+.field::placeholder {
+  color: rgba(16, 24, 33, 0.38);
+}
+.field:hover {
+  border-bottom-color: var(--color-ink);
+}
+.field:focus {
+  outline: none;
+  border-bottom-color: var(--color-cyan);
+}
+
+.field-dark {
+  color: var(--color-paper);
+  border-bottom-color: rgba(246, 244, 240, 0.42);
+}
+.field-dark::placeholder {
+  color: rgba(246, 244, 240, 0.5);
+}
+.field-dark:hover {
+  border-bottom-color: rgba(246, 244, 240, 0.75);
+}
+.field-dark:focus {
+  border-bottom-color: var(--color-cyan-bright);
+}
+
+/* ---------- Detalji ---------------------------------------- */
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: 1px;
+}
+.link-underline:hover {
+  background-size: 0% 1px;
+}

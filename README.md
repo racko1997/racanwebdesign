@@ -1,0 +1,96 @@
+# Racan Web Studio
+
+Prodajni sajt studija. Jedna stranica, bez baze podataka.
+
+**Next.js 15 · Tailwind CSS 4 · TypeScript**
+
+---
+
+## Pokretanje
+
+```bash
+npm install
+npm run dev
+```
+
+Otvara se na http://localhost:3000
+
+---
+
+## Gdje se šta mijenja
+
+| Šta                                   | Fajl                          |
+| ------------------------------------- | ----------------------------- |
+| Telefon, email, domen, ključ forme    | `src/site.config.ts`          |
+| Radovi u portfoliju                   | `src/data/projects.ts`        |
+| Paketi i cijene                       | `src/data/paketi.ts`          |
+| Česta pitanja                         | `src/data/faq.ts`             |
+| Tekstovi sekcija                      | `src/components/Sections.tsx` |
+| Kontakt sekcija i forma               | `src/components/Kontakt.tsx`  |
+| Boje, tipografija, animacije          | `src/app/globals.css`         |
+| SEO i strukturirani podaci            | `src/app/layout.tsx`          |
+| Logotip                               | `public/logo/`                |
+| Screenshotovi radova                  | `public/radovi/`              |
+
+Paketi i pitanja se iz `src/data/` povlače i u sekcije i u strukturirane
+podatke za Google — mijenjaš na jednom mjestu.
+
+---
+
+## Prije objave
+
+- [ ] **Web3Forms ključ** u `src/site.config.ts` (web3forms.com → upiši mail → Create Access Key)
+- [ ] **Domen** upisan u `site.config.ts` → `url`
+- [ ] Telefon, Viber i WhatsApp provjereni klikom **na telefonu**
+- [ ] Poslata probna poruka kroz formu i stigla na mail
+
+---
+
+## Dodavanje novog rada
+
+1. Screenshotove (`.webp`, desktop ~1200 px širine, mobilni ~420 px) ubaci u `public/radovi/`
+2. Dopiši objekat u listu u `src/data/projects.ts`
+
+```ts
+{
+  slug: "naziv-projekta",
+  naziv: "Naziv",
+  djelatnost: "Djelatnost klijenta",
+  tip: "Prezentacioni sajt",
+  status: "live",              // "live" = stvarno naručen i objavljen
+  oznaka: "Klijentski sajt",   // tekst na oznaci
+  opis: "Dvije rečenice jezikom klijenta.",
+  sadrzi: ["Stavka", "Stavka"],
+  link: "https://…",           // izostavi ako sajt nije javan
+  domen: "primjer.com",
+  mobile: "/radovi/naziv-mobile.webp",
+  desktop: "/radovi/naziv-desktop.webp",
+  bg: "#ffffff",
+}
+```
+
+**`status: "live"` samo za sajt koji je stvarno naručen.** Za sve ostalo
+`"koncept"` — ispod se automatski ispiše napomena da rad nije naručen.
+
+---
+
+## Objava na Vercel
+
+1. Pushuj repo na GitHub
+2. vercel.com → **Add New Project** → izaberi repo → **Deploy**
+3. Domen se dodaje u **Settings → Domains**
+
+Ništa se ne podešava ručno — Vercel sam prepozna Next.js.
+
+---
+
+## Dizajn — kratko
+
+Sajt je namjerno miran i skoro jednobojan: boju daju radovi u portfoliju,
+ne sam sajt.
+
+- Bez zaobljenih uglova (`* { border-radius: 0 }`) i bez sjenki — samo linije od 1 px
+- Mono font za brojeve, cijene i oznake
+- Fontovi se hostuju sa sajta, nema poziva prema Google-u
+- Animacije: podrazumijevano stanje je **uvijek vidljivo**, animacija samo dodaje
+  pokret ako je podržana i ako korisnik nije tražio smanjen pokret

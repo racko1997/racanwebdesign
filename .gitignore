@@ -1,0 +1,16 @@
+# zavisnosti i build
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+
+# radni fajlovi — ne idu na GitHub
+/screenshots
+*.zip
+
+# lokalna podešavanja
+.env*.local
+.DS_Store
+Thumbs.db
+.vscode
