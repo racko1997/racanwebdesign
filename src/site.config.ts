@@ -68,7 +68,7 @@ export const site = {
    *   → HTML tag → kopiraj vrijednost content="..." ovdje.
    *   Poslije toga u Search Console pošalji sitemap: /sitemap.xml
    */
-  metaVerifikacija: "",
+  metaVerifikacija: "6jrphc2g1l9b16bjfxhzpvjm2o50cx",
   googleVerifikacija: "",
 
   /** Odgovor koji obećavaš u copy-ju. Mijenjaj slobodno. */
