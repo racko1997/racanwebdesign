@@ -6,7 +6,7 @@ import { site, cta } from "@/site.config";
 
 const meni: [string, string][] = [
   ["Radovi", "#radovi"],
-  ["Šta dobijate", "#sta"],
+  ["Šta dobijete", "#sta"],
   ["Cijene", "#cijene"],
   ["O meni", "#o-nama"],
 ];

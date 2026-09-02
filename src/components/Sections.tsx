@@ -249,43 +249,49 @@ function Rad({ p, index }: { p: (typeof projekti)[number]; index: number }) {
           </div>
         </div>
 
-        {/* Prikaz sajta */}
+        {/* Prikaz sajta.
+            Mobilni screenshot se ispisuje SAMO JEDNOM — na telefonu stoji
+            centriran, a od lg naviše ga CSS premjesti u ugao okvira
+            browsera. Ranije su postojala dva ista <img> elementa, pa je
+            telefon nepotrebno dekodirao istu (vrlo visoku) sliku dvaput. */}
         <div className="lg:col-span-8">
-          {/* Desktop prikaz — od lg naviše */}
-          {p.desktop && (
-            <div className="relative hidden lg:block">
-              <BrowserFrame domen={p.domen}>
-                <ScrollShot
-                  src={p.desktop}
-                  alt={`Naslovna strana sajta ${p.naziv}`}
-                  bg={p.bg}
-                  className="h-[520px] w-full"
-                />
-              </BrowserFrame>
-              <PhoneFrame className="absolute -bottom-8 right-8 w-[190px]">
-                <ScrollShot
-                  src={p.mobile}
-                  alt={`Mobilna verzija sajta ${p.naziv}`}
-                  bg={p.bg}
-                  className="h-[340px] w-full"
-                />
-              </PhoneFrame>
-            </div>
-          )}
+          <div className={p.desktop ? "lg:relative" : ""}>
+            {p.desktop && (
+              <div className="hidden lg:block">
+                <BrowserFrame domen={p.domen}>
+                  <ScrollShot
+                    src={p.desktop}
+                    alt={`Naslovna strana sajta ${p.naziv}`}
+                    bg={p.bg}
+                    className="h-[520px] w-full"
+                  />
+                </BrowserFrame>
+              </div>
+            )}
 
-          {/* Mobilni prikaz — do lg */}
-          <div className={p.desktop ? "lg:hidden" : ""}>
-            <div className="flex justify-center lg:justify-start">
+            <div
+              className={
+                p.desktop
+                  ? "flex justify-center lg:block"
+                  : "flex justify-center lg:justify-start"
+              }
+            >
               <PhoneFrame
-                className={`w-full max-w-[300px] ${
-                  p.desktop ? "lg:max-w-[340px]" : "lg:max-w-[360px]"
-                }`}
+                className={
+                  p.desktop
+                    ? "w-full max-w-[300px] lg:absolute lg:-bottom-8 lg:right-8 lg:w-[190px] lg:max-w-none"
+                    : "w-full max-w-[300px] lg:max-w-[360px]"
+                }
               >
                 <ScrollShot
                   src={p.mobile}
                   alt={`Mobilna verzija sajta ${p.naziv}`}
                   bg={p.bg}
-                  className={`w-full ${p.desktop ? "h-[480px] lg:h-[560px]" : "h-[480px] lg:h-[640px]"}`}
+                  className={
+                    p.desktop
+                      ? "h-[480px] w-full lg:h-[340px]"
+                      : "h-[480px] w-full lg:h-[640px]"
+                  }
                 />
               </PhoneFrame>
             </div>
@@ -435,7 +441,14 @@ export function Cijene() {
           ))}
         </div>
 
-        <div className="rule-dark mt-12 grid gap-10 pt-7 sm:grid-cols-2">
+        {/* Najjača razlika prema konkurenciji sa mjesečnom pretplatom —
+            zaslužuje svoju liniju, a ne fusnotu. */}
+        <p className="rule-dark mt-12 max-w-[62ch] pt-8 text-[1.25rem] leading-[1.55] text-paper sm:text-[1.4375rem]">
+          Bez mjesečne pretplate. Hosting je besplatan, domen ide na vaše ime.
+          Sajt je vaš i ostaje vaš.
+        </p>
+
+        <div className="mt-12 grid gap-10 sm:grid-cols-2">
           <div>
             <h4 className="mono text-paper/60">Šta mijenja cijenu</h4>
             <p className="body-sm mt-3.5 max-w-[44ch] text-paper/80">
@@ -447,9 +460,9 @@ export function Cijene() {
           <div>
             <h4 className="mono text-paper/60">Šta se plaća posebno</h4>
             <p className="body-sm mt-3.5 max-w-[44ch] text-paper/80">
-              Domen — otprilike 25 do 60 KM godišnje, zavisno od nastavka (.com,
-              .ba, .info). Hosting je za ovakve sajtove besplatan, a mjesečne
-              pretplate nema. Sve podešavam ja, a vlasnik ste vi.
+              Samo domen — otprilike 25 do 60 KM godišnje, zavisno od nastavka
+              (.com, .ba, .info). Kupujem ga i podešavam ja, a vodi se na vaše
+              ime.
             </p>
           </div>
         </div>

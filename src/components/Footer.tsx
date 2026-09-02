@@ -4,7 +4,7 @@ import { site } from "@/site.config";
 
 const linkovi: [string, string][] = [
   ["Radovi", "#radovi"],
-  ["Šta dobijate", "#sta"],
+  ["Šta dobijete", "#sta"],
   ["Cijene", "#cijene"],
   ["Kako ide", "#kako"],
   ["O meni", "#o-nama"],
