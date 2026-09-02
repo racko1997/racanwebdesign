@@ -95,7 +95,7 @@ function strukturiraniPodaci() {
     telephone: site.telefon,
     email: site.email,
     image: `${site.url}/og.png`,
-    priceRange: "399–1500 KM",
+    priceRange: "od 399 KM",
     areaServed: ["Bosna i Hercegovina", "Srbija", "Hrvatska", "Crna Gora"],
     knowsLanguage: ["bs", "sr", "hr"],
     sameAs: [site.facebook],

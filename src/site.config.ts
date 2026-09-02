@@ -1,3 +1,5 @@
+import { KANONSKI } from "./domeni.mjs";
+
 /**
  * ============================================================
  *  RACAN — JEDINO MJESTO KOJE MORAŠ UREDITI
@@ -12,8 +14,12 @@ export const site = {
   puniNaziv: "Racan Web Studio",
   slogan: "Moderni i pristupačni web sajtovi",
 
-  /** Promijeni kad kupiš domen — koristi se za SEO i dijeljenje na mrežama. */
-  url: "https://racanwebstudio.com",
+  /**
+   * Kanonski domen — mijenja se u src/domeni.mjs, ne ovdje.
+   * Odatle ga čita i next.config.mjs za preusmjerenja, pa ne može
+   * da se desi da se canonical i redirect raziđu.
+   */
+  url: KANONSKI,
 
   /** ---- KONTAKT: OBAVEZNO ZAMIJENI ---------------------------------- */
   telefon: "066 168 704",
@@ -32,7 +38,7 @@ export const site = {
    * 3. Ključ stiže na mail — zalijepi ga ovdje.
    * Dok je prazno, forma radi ali te samo upozori da fali ključ.
    */
-  web3formsKey: "12e64632-2aec-43e0-b939-0bb18bb4f66b",
+  web3formsKey: "",
 
   /**
    * ---- META PIXEL (Facebook / Instagram reklame) -------------------

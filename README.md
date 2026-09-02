@@ -2,7 +2,7 @@
 
 Prodajni sajt studija. Jedna stranica, bez baze podataka.
 
-**Next.js 15 · Tailwind CSS 4 · TypeScript**
+**Next.js 16 · Tailwind CSS 4 · TypeScript**
 
 ---
 
@@ -21,7 +21,8 @@ Otvara se na http://localhost:3000
 
 | Šta                                   | Fajl                          |
 | ------------------------------------- | ----------------------------- |
-| Telefon, email, domen, ključ forme    | `src/site.config.ts`          |
+| Telefon, email, ključ forme, piksel    | `src/site.config.ts`          |
+| **Domen i preusmjerenja**             | `src/domeni.mjs`              |
 | Radovi u portfoliju                   | `src/data/projects.ts`        |
 | Paketi i cijene                       | `src/data/paketi.ts`          |
 | Česta pitanja                         | `src/data/faq.ts`             |
@@ -40,7 +41,8 @@ podatke za Google — mijenjaš na jednom mjestu.
 ## Prije objave
 
 - [ ] **Web3Forms ključ** u `src/site.config.ts` (web3forms.com → upiši mail → Create Access Key)
-- [ ] **Domen** upisan u `site.config.ts` → `url`
+- [ ] **Domen** upisan u `src/domeni.mjs` → `KANONSKI` (odatle se povlači i canonical i preusmjerenje)
+- [ ] U Vercel → Settings → Domains: `racan.cc` postavljen kao **Production domain**, `www.racan.cc` kao **Redirect** na njega
 - [ ] Telefon, Viber i WhatsApp provjereni klikom **na telefonu**
 - [ ] Poslata probna poruka kroz formu i stigla na mail
 - [ ] **Meta Pixel ID** u `site.config.ts` (tek kad puštaš reklame) — dok je prazan, na sajtu nema Meta koda ni trake za pristanak
@@ -92,9 +94,18 @@ piksel se tada nikad ne učita. Uspješno poslata forma javlja Meti događaj
 
 1. Pushuj repo na GitHub
 2. vercel.com → **Add New Project** → izaberi repo → **Deploy**
-3. Domen se dodaje u **Settings → Domains**
+3. **Settings → Domains** → `racan.cc` kao *Production domain*, `www.racan.cc` postavljen da preusmjerava na njega
 
 Ništa se ne podešava ručno — Vercel sam prepozna Next.js.
+
+### Kanonski domen
+
+Sajt ima **jednu** pravu adresu: `racan.cc`. `www.racan.cc` šalje **308** na
+nju. To radi na dva nivoa: Vercel na svom ulazu, a `next.config.mjs` kao
+sigurnosna mreža — oba čitaju `src/domeni.mjs`, pa se canonical i
+preusmjerenje ne mogu razići.
+
+Ako ikad promijeniš domen, mijenjaš **samo `src/domeni.mjs`**.
 
 ---
 
