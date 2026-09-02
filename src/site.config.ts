@@ -38,7 +38,7 @@ export const site = {
    * 3. Ključ stiže na mail — zalijepi ga ovdje.
    * Dok je prazno, forma radi ali te samo upozori da fali ključ.
    */
-  web3formsKey: "",
+  web3formsKey: "12e64632-2aec-43e0-b939-0bb18bb4f66b",
 
   /**
    * ---- META PIXEL (Facebook / Instagram reklame) -------------------
@@ -52,7 +52,7 @@ export const site = {
    * Bez ovoga Meta ne zna ko je sa reklame poslao upit, pa ne može
    * da optimizuje prikazivanje oglasa ka sličnim ljudima.
    */
-  metaPixelId: "",
+  metaPixelId: "919096797930496",
 
   /**
    * ---- VERIFIKACIJA DOMENA -----------------------------------------
